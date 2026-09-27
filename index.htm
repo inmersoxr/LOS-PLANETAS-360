@@ -92,8 +92,17 @@ function select(k){
   s.set(TDV.PlayerSettings.HLS_URL,"lib/Hls.js?v=1737152698025");
   s.set(TDV.PlayerSettings.QUERY_STRING_PARAMETERS,"v=1737152698025");
   player=TDV.PlayerAPI.create(s);
-  setTimeout(function(){setMedia(p.scene)},900);
- }else if(p.scene){setMedia(p.scene)}
+  setTimeout(function(){setMedia(p.scene); setTimeout(syncCurrentPlanet,500)},900);
+ }else if(p.scene){setMedia(p.scene); setTimeout(syncCurrentPlanet,500)}
+}
+
+function showPlanetInfo(k){
+ var p=planets[k];
+ if(!p)return;
+ var label=k==="Jupiter"?"Júpiter":k;
+ document.getElementById("current").textContent=label;
+ document.getElementById("info").innerHTML="<h2>"+label+"</h2><b>"+p.a+"</b>"+p.p.map(function(x){return "<p>"+x+"</p>"}).join("");
+ document.getElementById("info").style.display="block";
 }
 
 function setMedia(n){
@@ -101,6 +110,24 @@ function setMedia(n){
   var r=player.getById("rootPlayer");
   if(r)r.setMainMediaByName(n);
  }
+}
+
+function syncCurrentPlanet(){
+ if(!player)return;
+ var r=player.getById("rootPlayer");
+ if(!r)return;
+ var media;
+ try{media=r.get("currentMedia");}catch(e){}
+ if(!media){
+  try{media=r.getMainMedia();}catch(e){}
+ }
+ if(!media)return;
+ var name;
+ try{name=media.get("name")||media.get("label");}catch(e){}
+ if(!name)return;
+ var key=name;
+ if(key==="Júpiter")key="Jupiter";
+ if(planets[key])showPlanetInfo(key);
 }
 
 function back(){
@@ -117,6 +144,7 @@ document.getElementById("viewer").addEventListener("touchstart",function(){
 },{passive:true});
 
 build("landingSkin");build("workSkin");
+setInterval(syncCurrentPlanet,500);
 </script>
 </body>
 </html>
