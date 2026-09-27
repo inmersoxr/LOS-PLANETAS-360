@@ -1,7 +1,7 @@
 (function(){
     var script = {
  "start": "this.init()",
- "downloadEnabled": true,
+ "downloadEnabled": false,
  "data": {
   "name": "Player445"
  },
