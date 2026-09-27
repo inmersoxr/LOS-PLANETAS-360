@@ -49,7 +49,7 @@ h1{font:400 clamp(60px,10vw,125px)/.9 Georgia,serif;letter-spacing:-.06em;margin
 </section>
 
 <section id="work">
-<div id="viewer"></div><nav class="work-nav" id="workSkin"></nav>
+<div id="viewer"></div>
 <div class="top"><button onclick="back()">← Obra</button><div class="name" id="current"></div></div>
 <div class="info" id="info"></div>
 </section>
@@ -143,7 +143,7 @@ document.getElementById("viewer").addEventListener("touchstart",function(){
  document.getElementById("info").style.display="none";
 },{passive:true});
 
-build("landingSkin");build("workSkin");
+build("landingSkin");
 setInterval(syncCurrentPlanet,500);
 </script>
 </body>
