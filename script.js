@@ -1,6 +1,6 @@
 (function(){
     var script = {
- "start": "this.init(); this.syncPlaylists([this.ThumbnailList_4122FD26_4EDC_509F_41B6_B243D783CDA2_playlist,this.mainPlayList])",
+ "start": "this.init()",
  "downloadEnabled": true,
  "data": {
   "name": "Player445"
@@ -10,8 +10,7 @@
  "layout": "absolute",
  "minHeight": 20,
  "children": [
-  "this.MainViewer",
-  "this.ThumbnailList_4122FD26_4EDC_509F_41B6_B243D783CDA2"
+  "this.MainViewer"
  ],
  "shadow": false,
  "scrollBarWidth": 10,
