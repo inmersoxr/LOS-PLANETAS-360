@@ -5445,7 +5445,7 @@
  "class": "PanoramaCamera",
  "initialPosition": {
   "class": "PanoramaCameraPosition",
-  "yaw": 0,
+  "yaw": 45,
   "pitch": 0
  },
  "id": "panorama_437885CD_4E98_A6F6_41C1_A9BFAD03D127_camera"
